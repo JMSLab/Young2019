@@ -1,0 +1,198 @@
+*** Builder log created: {2025-06-20 15:11:51}
+*** Builder log completed: {2025-06-20 15:11:59}
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./source/paper/Template.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/article.
+cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/size12.c
+lo))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/ae/ae.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/fontenc.
+sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/ae/aecompl.st
+y)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/fontenc.
+sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/ae/t1aer.fd))
+
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/inputenc
+.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/geometry/geom
+etry.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/graphics/keyv
+al.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/iftex/ifvte
+x.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/iftex/iftex
+.sty)))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/tools/array.s
+ty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/amsmath/amsma
+th.sty
+For additional information on amsmath, use the `?' option.
+
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/amsmath/amste
+xt.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/amsmath/amsge
+n.sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/amsmath/amsbs
+y.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/amsmath/amsop
+n.sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/amscls/amsthm
+.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/graphics/grap
+hicx.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/graphics/grap
+hics.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/graphics/trig
+.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/graphics-cfg/
+graphics.cfg)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/graphics-def/
+pdftex.def)))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/setspace/sets
+pace.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/natbib/natbib
+.sty) (/Users/benworkman/texmf/tex/latex/datetime/datetime.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/etoolbox/etoo
+lbox.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/fmtcount/fmtc
+ount.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/base/ifthen.s
+ty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/xkeyval/xkeyv
+al.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/xkeyval/xke
+yval.tex
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/xkeyval/xkv
+utils.tex)))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/fmtcount/fcpr
+efix.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/fmtcount/fcnu
+mparser.sty)))
+(/Users/benworkman/texmf/tex/latex/datetime/datetime-defaults.sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/currfile/curr
+file.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/kvoptions/kvo
+ptions.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/ltxcmds/ltx
+cmds.sty)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/kvsetkeys/kvs
+etkeys.sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/filehook/file
+hook.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/filehook/file
+hook-2020.sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/currfile/curr
+file-abspath.sty)
+
+Package currfile-abspath Warning: The required recorder file (.fls) was not fou
+nd.
+(currfile-abspath)                Please compile with the '-recorder' option.
+(currfile-abspath)                Note that MikTeX requires two compiler runs.
+(currfile-abspath)                Occurred on input line 295.
+
+)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/pdftexcmds/
+pdftexcmds.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/infwarerr/i
+nfwarerr.sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/bibtopic/bibt
+opic.sty) (./output/analysis/top_gdp/top_gdp.tex)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/l3backend/l3b
+ackend-pdftex.def) (./output/paper/TemplateTex.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(90.3375pt, 433.62001pt, 90.3375pt)
+* v-part:(T,H,B)=(90.3375pt, 614.295pt, 90.3375pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=433.62001pt
+* \textheight=614.295pt
+* \oddsidemargin=18.0675pt
+* \evensidemargin=18.0675pt
+* \topmargin=-18.9325pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/context/base/mkii/s
+upp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/epstopdf-pkg/
+epstopdf-base.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/grfext/grfext
+.sty
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/generic/kvdefinekey
+s/kvdefinekeys.sty))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/latexconfig/e
+pstopdf-sys.cfg))
+(/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/tex/latex/fmtcount/fc-e
+nglish.def)
+
+LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
+(Font)              using `TS1/cmr/m/n' instead
+(Font)              for symbol `textasteriskcentered' on input line 37.
+
+[1{/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/map/pdftex/updm
+ap/pdftex.map}{/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/enc
+/dvips/cm-super/cm-super-ts1.enc}] (./output/tables/top_gdp.tex
+Overfull \hbox (5.02565pt too wide) in paragraph at lines 13--14
+ []|\T1/aer/m/n/12 150725.1941| 
+
+Overfull \hbox (5.02565pt too wide) in paragraph at lines 14--15
+ []|\T1/aer/m/n/12 141200.3800| 
+
+Overfull \hbox (5.02565pt too wide) in paragraph at lines 15--16
+ []|\T1/aer/m/n/12 104965.3061| 
+) (./source/figures/gdp_educ.tex
+Overfull \hbox (240.41653pt too wide) in paragraph at lines 8--9
+ [][] 
+) (./output/paper/TemplateTex.1.bbl) (./output/paper/TemplateTex.2.bbl)
+[2] [3 <./output/analysis/plots/gdp_educ.png (PNG copy)>]
+(./output/paper/TemplateTex.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)</opt/homebrew/Cellar/texli
+ve/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb></opt/hom
+ebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></opt/homebrew/Cellar/texlive/20240312/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/homebrew/Cellar/texlive/2024
+0312/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></opt/homebrew/
+Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.p
+fb></opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/type1/public/c
+m-super/sfrm1000.pfb>
+Output written on output/paper/TemplateTex.pdf (3 pages, 140868 bytes).
+Transcript written on output/paper/TemplateTex.log.
