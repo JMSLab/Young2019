@@ -1,0 +1,10 @@
+File: datastore/derived/replication/paper.csv
+
+MD5 hash: 2c7408a4b93ecb7aa6d9748d30fe959f
+
+Keys: paper 
+
+                     type count unique   mean std    min    50%    max
+paper              object     1      1                                
+leverage (paper)  float64     1         0.017      0.017  0.017  0.017
+
