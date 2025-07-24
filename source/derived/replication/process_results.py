@@ -17,12 +17,14 @@ def find_stata_bin():
 
 def concat_results(paper_dir, acronym):
     block_dirs = sorted(glob.glob(os.path.join(paper_dir, 'block_*')))
-    df_1 = pd.read_stata(os.path.join(block_dirs[0], f'results_Fisher{acronym}.dta'))
+    results_paths = [os.path.join(block_dir, f'results_Fisher{acronym}.dta') for block_dir in block_dirs]
+    results_paths = [p for p in results_paths if os.path.exists(p)]
+    df_1 = pd.read_stata(results_paths[0])
     first_cols = [c for c in df_1.columns if not c.startswith('Res') and c not in ['N']]
     df_1 = df_1[first_cols].dropna(how='all')
     df_2 = []
-    for block_dir in block_dirs:
-        block_df = pd.read_stata(os.path.join(block_dir, f'results_Fisher{acronym}.dta'))
+    for result_path in results_paths:
+        block_df = pd.read_stata(result_path)
         block_df = block_df.drop(columns=first_cols, errors='ignore')
         block_df = block_df.dropna(how='all')
         df_2.append(block_df)
