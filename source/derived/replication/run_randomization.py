@@ -36,9 +36,13 @@ def modify_fisher(block_dir, block_num, num_reps, acronym, stata_version='13.0')
     with open(f'{block_dir}/FisherN{acronym}.do', 'w') as f:
         f.writelines(lines)
 
-def run_fisher(acronym, block_dir, stata_bin):
+def run_fisher(acronym, block_dir, stata_bin, timeout=3600):
     cmd = [stata_bin, '-b', 'run', os.path.join(block_dir, f'FisherN{acronym}.do')]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        print(f"Stata execution timed out after {timeout} seconds", file=sys.stderr)
+        return
     if result.returncode != 0:
         print("Stata returned an error:", result.stderr, file=sys.stderr)
 
