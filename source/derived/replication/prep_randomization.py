@@ -49,6 +49,13 @@ def xtset(acronym, paper_dir, varname):
                 if 'use Dat' in line:
                     file.write(f'xtset {varname}\n')
 
+def modify_ALO(paper_dir):
+    with open(os.path.join(paper_dir, 'ReplicationALO.do'), 'r') as file:
+        lines = file.readlines()
+        lines = [line.replace('partial(`all\')', '') for line in lines]
+    with open(os.path.join(paper_dir, 'ReplicationALO.do'), 'w') as file:
+        file.writelines(lines)
+
 def modify_CMS(paper_dir):
     xtset('CMS', paper_dir, 'id_number')
 
@@ -129,4 +136,7 @@ def main():
     make_tables(acronym, paper_dir, stata_bin)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print("Error occurred:", e)

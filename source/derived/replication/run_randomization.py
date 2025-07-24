@@ -20,16 +20,18 @@ def copy_files(paper_dir, block_dir, acronym):
     srs = os.path.join(paper_dir, f'FisherN{acronym}.do')
     dst = os.path.join(block_dir, f'FisherN{acronym}.do')
     shutil.copy(srs, dst)
+    for file in glob.glob(f'{paper_dir}/Dat*.dta') + glob.glob(f'{paper_dir}/*.ado'):
+        shutil.copy(file, block_dir)
 
-def modify_fisher(paper_dir, block_dir, block_num, num_reps, acronym, stata_version='13.0'):
+def modify_fisher(block_dir, block_num, num_reps, acronym, stata_version='13.0'):
     with open(f'{block_dir}/FisherN{acronym}.do', 'r') as f:
         lines = f.readlines()
-        lines.insert(0, f'cd "{paper_dir}"\n')
+        lines.insert(0, f'cd "{block_dir}"\n')
         lines.insert(0, f'global reps = {num_reps}\n')
         lines.insert(0, f'version {stata_version}\n')
         lines = [line.replace('ivreg2', 'ivreg') for line in lines]
         lines = [line.replace(f'save results\\Fisher{acronym}, replace', 
-                              f'save block_{block_num}/results_Fisher{acronym}, replace') for line in lines]
+                              f'save results_Fisher{acronym}, replace') for line in lines]
         lines = [line.replace(f'set seed `c\'', f'set seed `={num_reps * block_num} + `c\'\'') for line in lines]
     with open(f'{block_dir}/FisherN{acronym}.do', 'w') as f:
         f.writelines(lines)
@@ -52,8 +54,13 @@ def main():
     stata_bin = find_stata_bin()
 
     copy_files(paper_dir, block_dir, acronym)
-    modify_fisher(paper_dir, block_dir, block_num, num_reps, acronym)
+    modify_fisher(block_dir, block_num, num_reps, acronym)
     run_fisher(acronym, block_dir, stata_bin)
+    for file in glob.glob(f'{block_dir}/Dat*.dta'):
+        os.remove(file)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print("Error occurred:", e)
