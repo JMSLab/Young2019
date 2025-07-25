@@ -47,7 +47,7 @@ def run_fisher(acronym, block_dir, stata_bin, timeout=3600):
         print("Stata returned an error:", result.stderr, file=sys.stderr)
 
 def main():
-    paper = sys.argv[1] if len(sys.argv) > 1 else 'AshrafBerryShapiro_2010'
+    paper = sys.argv[1] if len(sys.argv) > 1 else 'AkerKsollLybbert_2012'
     block_num = int(sys.argv[2]) if len(sys.argv) > 2 else 0
     num_reps = int(sys.argv[3]) if len(sys.argv) > 3 else 100
 

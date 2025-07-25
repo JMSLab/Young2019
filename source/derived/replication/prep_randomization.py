@@ -87,10 +87,30 @@ def modify_DHR(paper_dir):
         lines = file.readlines()
     with open(os.path.join(paper_dir, 'ReplicationDHR.do'), 'w') as file:
         lines = [line.replace('Temp\\', 'Temp/') for line in lines]
+        mod_lines = [line for line in lines if 'use ' in line and '\"' not in line]
+        lines = [line.replace('use ', 'use \"') if line in mod_lines else line for line in lines]
+        mod_lines = [line for line in lines if ', clear' in line and '\",' not in line]
+        lines = [line.replace(', clear', '\", clear') if line in mod_lines else line for line in lines]
+        file.writelines(lines)
+
+def modify_ER(paper_dir):
+    with open(os.path.join(paper_dir, 'mycmdER.do'), 'r') as file:
+        lines = file.readlines()
+        lines = [line for line in lines if line.strip()]
+        lines = lines[:-3]
+    with open(os.path.join(paper_dir, 'mycmdER.do'), 'w') as file:
         file.writelines(lines)
 
 def modify_LL(paper_dir):
     xtset('LL', paper_dir, 'uniqueid')
+
+def modify_MMW(paper_dir):
+    with open(os.path.join(paper_dir, 'ReplicationMMW.do'), 'r') as file:
+        lines = file.readlines()
+        lines = [line for line in lines if 'xtivreg' not in line]
+        lines = [line for line in lines if 'lincom' not in line]
+    with open(os.path.join(paper_dir, 'ReplicationMMW.do'), 'w') as file:
+        file.writelines(lines)
 
 def modify_R(paper_dir):
     xtset('R', paper_dir, 'id')
@@ -120,7 +140,7 @@ def make_tables(acronym, paper_dir, stata_bin):
         print("Stata returned an error:", result.stderr, file=sys.stderr)
 
 def main():
-    paper = sys.argv[1] if len(sys.argv) > 1 else 'AshrafBerryShapiro_2010'
+    paper = sys.argv[1] if len(sys.argv) > 1 else 'AkerKsollLybbert_2012'
     
     xwalk = pd.read_csv('datastore/raw/InputsToYoung2019/Young2019AcronymCrosswalk.csv')
     acronym = xwalk['acronym'][xwalk['dir_name'] == paper].values[0]
