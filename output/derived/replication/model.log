@@ -1,13 +1,13 @@
 File: datastore/derived/replication/model.csv
 
-MD5 hash: bb393ae77cb5c0a7fc8285980cffc483
+MD5 hash: cb3ab18ca072f32636a7e77dc170d5f9
 
 Keys: paper original table number regression number 
 
-                                  type count unique    mean     std    min      50%      max
-paper                           object    43      1                                         
-original table number            int64    43         56.837  50.095  2.000  103.000  103.000
-regression number              float64    43         22.000  12.557  1.000   22.000   43.000
-regression command              object    43      5                                         
-variance-covariance estimator   object    43      1                                         
+                                  type  count unique    mean     std    min     50%      max
+paper                           object  1,015     36                                        
+original table number            int64  1,015         13.643  28.508  1.000   5.000  105.000
+regression number              float64  1,015         33.853  38.617  1.000  20.000  180.000
+regression command              object  1,015     19                                        
+variance-covariance estimator   object  1,015      7                                        
 

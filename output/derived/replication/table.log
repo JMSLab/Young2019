@@ -1,11 +1,11 @@
 File: datastore/derived/replication/table.csv
 
-MD5 hash: be6bafae6f52ff2e28ddffcac2730b2c
+MD5 hash: f8af66cb6e8d449e87372a1ceba87a1b
 
 Keys: paper original table number 
 
-                         type count unique    mean     std    min    50%      max
-paper                  object     5      1                                       
-original table number   int64     5         23.400  44.512  2.000  4.000  103.000
-main table indicator    int64     5          0.200   0.447  0.000  0.000    1.000
+                         type count unique   mean     std    min    50%      max
+paper                  object   127     36                                      
+original table number   int64   127         9.992  22.759  1.000  4.000  105.000
+main table indicator    int64   127         0.283   0.452  0.000  0.000    1.000
 

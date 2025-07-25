@@ -19,6 +19,7 @@ def concat_results(paper_dir, acronym):
     block_dirs = sorted(glob.glob(os.path.join(paper_dir, 'block_*')))
     results_paths = [os.path.join(block_dir, f'results_Fisher{acronym}.dta') for block_dir in block_dirs]
     results_paths = [p for p in results_paths if os.path.exists(p)]
+    print(len(results_paths))
     df_1 = pd.read_stata(results_paths[0])
     first_cols = [c for c in df_1.columns if not c.startswith('Res') and c not in ['N']]
     df_1 = df_1[first_cols].dropna(how='all')
@@ -87,13 +88,13 @@ def add_leverage(df, paper_dir, acronym):
     return df
 
 def clean_up(acronym):
-    log_files = glob.glob(f'*{acronym}*.log')
+    log_files = [f'{acronym}_base_results.log', f'{acronym}_leverage.log', f'Replication{acronym}.log',
+                 f'FisherN{acronym}.log']
     for log_file in log_files:
         if os.path.exists(log_file) and log_file != 'sconstruct.log':
             os.remove(log_file)
 
-def main():
-    paper = sys.argv[1] if len(sys.argv) > 1 else 'AshrafBerryShapiro_2010'
+def process(paper):
     xwalk = pd.read_csv('datastore/raw/InputsToYoung2019/Young2019AcronymCrosswalk.csv')
     acronym = xwalk['acronym'][xwalk['dir_name'] == paper].values[0]
     young_dir = 'datastore/raw/Young2019/data'
@@ -110,6 +111,17 @@ def main():
     df['paper'] = paper
     df.to_csv(os.path.join(paper_dir, f'output_{paper}.csv'), index=False)
     clean_up(acronym)
+
+def main():
+    df = pd.read_csv('source/derived/replication/dispatch.csv')
+    for _, row in df.iterrows():
+        if row['num_blocks'] > 0:
+            print(f"Processing paper: {row['paper']}")
+            try:
+                process(row['paper'])
+            except Exception as e:
+                print(f"Error processing paper {row['paper']}: {e}")
+                continue
 
 if __name__ == "__main__":
     main()

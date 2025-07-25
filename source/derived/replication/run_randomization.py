@@ -36,7 +36,7 @@ def modify_fisher(block_dir, block_num, num_reps, acronym, stata_version='13.0')
     with open(f'{block_dir}/FisherN{acronym}.do', 'w') as f:
         f.writelines(lines)
 
-def run_fisher(acronym, block_dir, stata_bin, timeout=3600):
+def run_fisher(acronym, block_dir, stata_bin, timeout=14400):
     cmd = [stata_bin, '-b', 'run', os.path.join(block_dir, f'FisherN{acronym}.do')]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)

@@ -3,6 +3,8 @@ import os
 from source.lib.SaveData import SaveData
 
 def process_paper(paper):
+    if not os.path.exists(f'temp/replication/{paper}/output_{paper}.csv'):
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
     df = pd.read_csv(f'temp/replication/{paper}/output_{paper}.csv')
     df_paper = df.groupby('paper').agg({
         'leverage (paper)': 'mean'
