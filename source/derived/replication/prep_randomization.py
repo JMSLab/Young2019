@@ -33,7 +33,6 @@ def copy_files_to_temp(code_dir, data_dir, paper_dir, acronym):
 def modify_replication_file(file, paper_dir, stata_version='13.0'):
     with open(os.path.join(paper_dir, file), 'r') as f:
         lines = f.readlines()
-        lines.insert(0, f'cd "{paper_dir}"\n')
         lines.insert(0, f'version {stata_version}\n')
         lines = [line.replace('ivreg2', 'ivreg') for line in lines]
     with open(os.path.join(paper_dir, file), 'w') as f:
@@ -134,15 +133,15 @@ def modify_WDL(paper_dir):
     df.to_stata(dst, write_index=False)
 
 def make_tables(acronym, paper_dir, stata_bin):
-    cmd = [stata_bin, '-b', 'run', os.path.join(paper_dir, f'Replication{acronym}.do')]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    cmd = [stata_bin, '-b', 'run', f'Replication{acronym}.do']
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=paper_dir)
     if result.returncode != 0:
         print("Stata returned an error:", result.stderr, file=sys.stderr)
     with open(os.path.join(paper_dir, f'replication.log'), 'w') as log_file:
         log_file.write(result.stdout)
 
 def main():
-    paper = sys.argv[1] if len(sys.argv) > 1 else 'AkerKsollLybbert_2012'
+    paper = sys.argv[1] if len(sys.argv) > 1 else 'AshrafBerryShapiro_2010'
     
     xwalk = pd.read_csv('datastore/raw/InputsToYoung2019/Young2019AcronymCrosswalk.csv')
     acronym = xwalk['acronym'][xwalk['dir_name'] == paper].values[0]
