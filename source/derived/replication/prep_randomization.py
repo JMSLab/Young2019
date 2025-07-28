@@ -138,6 +138,8 @@ def make_tables(acronym, paper_dir, stata_bin):
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
         print("Stata returned an error:", result.stderr, file=sys.stderr)
+    with open(os.path.join(paper_dir, f'replication.log'), 'w') as log_file:
+        log_file.write(result.stdout)
 
 def main():
     paper = sys.argv[1] if len(sys.argv) > 1 else 'AkerKsollLybbert_2012'

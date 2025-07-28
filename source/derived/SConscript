@@ -7,16 +7,16 @@ for paper in papers:
     num_blocks = df[df['paper'] == paper]['num_blocks'].values[0]
     num_reps = df[df['paper'] == paper]['reps_per_block'].values[0]
 
-    target = [f'#temp/replication/{paper}/sconscript.log']
+    target = [f'#temp/replication/{paper}/replication.log']
     source = ['#source/derived/replication/prep_randomization.py']
     env.Python(target, source, CL_ARG=f'{paper}')
 
     for block_num in range(num_blocks):
-        target = [f'#temp/replication/{paper}/block_{block_num}/sconscript.log']
+        target = [f'#temp/replication/{paper}/block_{block_num}/randomization.log']
         source = ['#source/derived/replication/run_randomization.py',
-                  f'#temp/replication/{paper}/sconscript.log']
+                  f'#temp/replication/{paper}/replication.log']
         if block_num > 4:
-            source += [f'#temp/replication/{paper}/block_{block_num - 5}/sconscript.log']
+            source += [f'#temp/replication/{paper}/block_{block_num - 5}/randomization.log']
         env.Python(target, source, CL_ARG=f'{paper} {block_num} {num_reps}')
     
 target = []
@@ -24,10 +24,13 @@ source = ['#source/derived/replication/process_results.py']
 for paper in papers:
     num_blocks = df[df['paper'] == paper]['num_blocks'].values[0]
     target += [f'#temp/replication/{paper}/output_{paper}.csv']
-    source += [f'#temp/replication/{paper}/block_{block_num}/sconscript.log' for block_num in range(num_blocks)]
+    source += [f'#temp/replication/{paper}/block_{block_num}/randomization.log' for block_num in range(num_blocks)]
 env.Python(target, source)
 
-target = ['#output/derived/replication/sconscript.log']
+target = ['#output/derived/replication/paper.csv',
+          '#output/derived/replication/table.csv',
+          '#output/derived/replication/model.csv',
+          '#output/derived/replication/param.csv']
 source = ['#source/derived/replication/combine_outputs.py']
 source += [f'#temp/replication/{paper}/output_{paper}.csv' for paper in papers]
 env.Python(target, source)

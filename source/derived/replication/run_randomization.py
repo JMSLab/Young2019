@@ -45,6 +45,8 @@ def run_fisher(acronym, block_dir, stata_bin, timeout=1800):
         return
     if result.returncode != 0:
         print("Stata returned an error:", result.stderr, file=sys.stderr)
+    with open(os.path.join(block_dir, f'randomization.log'), 'w') as log_file:
+        log_file.write(result.stdout)
 
 def main():
     paper = sys.argv[1] if len(sys.argv) > 1 else 'AkerKsollLybbert_2012'
