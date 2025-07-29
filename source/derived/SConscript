@@ -1,7 +1,7 @@
 Import('*')
 
 import pandas as pd
-df = pd.read_csv('replication/dispatch.csv')
+df = pd.read_csv('replication/minimal_dispatch.csv')
 papers = [row['paper'] for _, row in df.iterrows() if row['num_blocks'] > 0]
 for paper in papers:
     num_blocks = df[df['paper'] == paper]['num_blocks'].values[0]
