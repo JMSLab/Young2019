@@ -15,8 +15,6 @@ for paper in papers:
         target = [f'#temp/replication/{paper}/block_{block_num}/randomization.log']
         source = ['#source/derived/replication/run_randomization.py',
                   f'#temp/replication/{paper}/replication.log']
-        if block_num > 4:
-            source += [f'#temp/replication/{paper}/block_{block_num - 5}/randomization.log']
         env.Python(target, source, CL_ARG=f'{paper} {block_num} {num_reps}')
     
 target = []

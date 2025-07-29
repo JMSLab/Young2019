@@ -132,16 +132,16 @@ def modify_WDL(paper_dir):
     df = pd.read_spss(src)
     df.to_stata(dst, write_index=False)
 
-def make_tables(acronym, paper_dir, stata_bin):
+def make_tables(acronym, paper_dir, stata_bin, timeout=3600):
     cmd = [stata_bin, '-b', 'run', f'Replication{acronym}.do']
-    result = subprocess.run(cmd, capture_output=True, text=True, cwd=paper_dir)
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=paper_dir, timeout=timeout)
     if result.returncode != 0:
         print("Stata returned an error:", result.stderr, file=sys.stderr)
     with open(os.path.join(paper_dir, f'replication.log'), 'w') as log_file:
         log_file.write(result.stdout)
 
 def main():
-    paper = sys.argv[1] if len(sys.argv) > 1 else 'AshrafBerryShapiro_2010'
+    paper = sys.argv[1] if len(sys.argv) > 1 else 'FieldPandePappRigol_2013'
     
     xwalk = pd.read_csv('datastore/raw/InputsToYoung2019/Young2019AcronymCrosswalk.csv')
     acronym = xwalk['acronym'][xwalk['dir_name'] == paper].values[0]
