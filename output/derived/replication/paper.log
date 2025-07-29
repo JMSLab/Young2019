@@ -1,11 +1,11 @@
 File: output/derived/replication/paper.csv
 
-MD5 hash: b15e8c27dceb230fc2092720464be6a8
+MD5 hash: dddc158803e8ccb2d306c63479aab977
 
 Keys: paper 
 
                                          type count unique   mean    std    min    50%    max
-paper                                  object    36     36                                   
-acronym in Young replication package   object    36     36                                   
-leverage (paper)                      float64    36         0.063  0.085  0.001  0.031  0.335
+paper                                  object    17     17                                   
+acronym in Young replication package   object    17     17                                   
+leverage (paper)                      float64    17         0.078  0.091  0.008  0.039  0.325
 
