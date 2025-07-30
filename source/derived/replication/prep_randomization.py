@@ -7,10 +7,8 @@ import glob
 import requests
 
 def find_stata_bin():
-    for exe in ('stata-mp', 'stata-se', 'stata', 'stata-cli'):
-        path = shutil.which(exe)
-        if path:
-            return path
+    if shutil.which('stata-se'):
+        return shutil.which('stata-se')
     apps = glob.glob('/Applications/Stata/Stata*.app/Contents/MacOS/*')
     if apps:
         return apps[0]
