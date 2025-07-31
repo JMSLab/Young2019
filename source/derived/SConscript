@@ -2,7 +2,7 @@ Import('*')
 
 import pandas as pd
 df = pd.read_csv('replication/dispatch.csv')
-papers = ['DufloHannaRyan_2019', 'CallenIsaqzadehLongSprenger_2014', 'GuryanKroftNotowidigdo_2009', 
+papers = ['DufloHannaRyan_2012', 'CallenIsaqzadehLongSprenger_2014', 'GuryanKroftNotowidigdo_2009', 
           'CaiChenFang_2009', 'Ashraf_2009', 'AngristLavy_2009', 'AngristLangOreopoulos_2009']
 for i, paper in enumerate(papers):
     num_blocks = df[df['paper'] == paper]['num_blocks'].values[0]
