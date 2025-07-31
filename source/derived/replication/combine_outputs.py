@@ -1,10 +1,9 @@
 import pandas as pd
 import os
 from source.lib.SaveData import SaveData
-import glob
 
 def check_results(paper, paper_dir, acronym, num_blocks):
-    block_dirs = sorted(glob.glob(os.path.join(paper_dir, 'block_*')))
+    block_dirs = [f'{paper_dir}/block_{i}' for i in range(num_blocks)]
     results_paths = [os.path.join(block_dir, f'results_Fisher{acronym}.dta') for block_dir in block_dirs]
     results_paths = [p for p in results_paths if os.path.exists(p)]
     if len(results_paths) != num_blocks:

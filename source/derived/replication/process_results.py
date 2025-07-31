@@ -2,11 +2,10 @@ import pandas as pd
 import os
 import subprocess
 import sys
-import glob
 from source.derived.replication.prep_randomization import find_stata_bin
 
 def concat_results(paper_dir, acronym, num_blocks):
-    block_dirs = sorted(glob.glob(os.path.join(paper_dir, 'block_*')))
+    block_dirs = [f'{paper_dir}/block_{i}' for i in range(num_blocks)]
     results_paths = [os.path.join(block_dir, f'results_Fisher{acronym}.dta') for block_dir in block_dirs]
     results_paths = [p for p in results_paths if os.path.exists(p)]
     if len(results_paths) != num_blocks:
@@ -97,6 +96,8 @@ def main():
     for _, row in df.iterrows():
         print(f"Processing paper: {row['paper']}")
         try:
+            if row['num_blocks'] == 0:
+                continue
             process(row['paper'], row['num_blocks'])
         except Exception as e:
             print(f"Error processing paper {row['paper']}: {e}")

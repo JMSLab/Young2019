@@ -1,9 +1,10 @@
 Import('*')
 
 import pandas as pd
-df = pd.read_csv('replication/test_dispatch.csv')
-papers = [row['paper'] for _, row in df.iterrows() if row['num_blocks'] > 0]
-for paper in papers:
+df = pd.read_csv('replication/dispatch.csv')
+papers = ['DufloHannaRyan_2019', 'CallenIsaqzadehLongSprenger_2014', 'GuryanKroftNotowidigdo_2009', 
+          'CaiChenFang_2009', 'Ashraf_2009', 'AngristLavy_2009', 'AngristLangOreopoulos_2009']
+for i, paper in enumerate(papers):
     num_blocks = df[df['paper'] == paper]['num_blocks'].values[0]
     num_reps = df[df['paper'] == paper]['reps_per_block'].values[0]
 
@@ -15,7 +16,30 @@ for paper in papers:
         target = [f'#temp/replication/{paper}/block_{block_num}/randomization.log']
         source = ['#source/derived/replication/run_randomization.py',
                   f'#temp/replication/{paper}/replication.log']
+        if i > 0:
+            source += [f'#temp/replication/{papers[i-1]}/block_{block_num}/randomization.log']
         env.Python(target, source, CL_ARG=f'{paper} {block_num} {num_reps}')
+
+
+
+
+
+
+df = pd.read_csv('replication/dispatch.csv')
+papers = [row['paper'] for _, row in df.iterrows() if row['num_blocks'] > 0]
+for paper in papers:
+    num_blocks = df[df['paper'] == paper]['num_blocks'].values[0]
+    num_reps = df[df['paper'] == paper]['reps_per_block'].values[0]
+
+    target = [f'#temp/replication/{paper}/replication.log']
+    source = ['#source/derived/replication/prep_randomization.py']
+    #env.Python(target, source, CL_ARG=f'{paper}')
+
+    for block_num in range(num_blocks):
+        target = [f'#temp/replication/{paper}/block_{block_num}/randomization.log']
+        source = ['#source/derived/replication/run_randomization.py',
+                  f'#temp/replication/{paper}/replication.log']
+        #env.Python(target, source, CL_ARG=f'{paper} {block_num} {num_reps}')
     
 target = []
 source = ['#source/derived/replication/process_results.py']
