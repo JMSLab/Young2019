@@ -5,11 +5,12 @@ import sys
 import glob
 from source.derived.replication.prep_randomization import find_stata_bin
 
-def concat_results(paper_dir, acronym):
+def concat_results(paper_dir, acronym, num_blocks):
     block_dirs = sorted(glob.glob(os.path.join(paper_dir, 'block_*')))
     results_paths = [os.path.join(block_dir, f'results_Fisher{acronym}.dta') for block_dir in block_dirs]
     results_paths = [p for p in results_paths if os.path.exists(p)]
-    print(len(results_paths))
+    if len(results_paths) != num_blocks:
+        raise ValueError(f"Expected {num_blocks} results files, but found {len(results_paths)}")
     df_1 = pd.read_stata(results_paths[0])
     first_cols = [c for c in df_1.columns if not c.startswith('Res') and c not in ['N']]
     df_1 = df_1[first_cols].dropna(how='all')
@@ -74,13 +75,13 @@ def add_leverage(df, paper_dir, acronym):
     df['leverage (paper)'] = df['leverage'].mean()
     return df
 
-def process(paper):
+def process(paper, num_blocks):
     xwalk = pd.read_csv('datastore/raw/InputsToYoung2019/Young2019AcronymCrosswalk.csv')
     acronym = xwalk['acronym'][xwalk['dir_name'] == paper].values[0]
     young_dir = 'datastore/raw/Young2019/data'
     paper_dir = f'temp/replication/{paper}'
     stata_bin = find_stata_bin()
-    df = concat_results(paper_dir, acronym)
+    df = concat_results(paper_dir, acronym, num_blocks)
     df.to_stata(os.path.join(paper_dir, f'results_Fisher{acronym}.dta'), write_index=False)
     modify_file('base_results.do', paper_dir, acronym)
     run_stata(f'{acronym}_base_results.do', paper_dir, stata_bin)
@@ -94,13 +95,12 @@ def process(paper):
 def main():
     df = pd.read_csv('source/derived/replication/dispatch.csv')
     for _, row in df.iterrows():
-        if row['num_blocks'] > 0:
-            print(f"Processing paper: {row['paper']}")
-            try:
-                process(row['paper'])
-            except Exception as e:
-                print(f"Error processing paper {row['paper']}: {e}")
-                continue
+        print(f"Processing paper: {row['paper']}")
+        try:
+            process(row['paper'], row['num_blocks'])
+        except Exception as e:
+            print(f"Error processing paper {row['paper']}: {e}")
+            continue
 
 if __name__ == "__main__":
     main()

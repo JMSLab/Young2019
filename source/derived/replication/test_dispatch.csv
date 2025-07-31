@@ -1,11 +1,11 @@
 ﻿paper,num_blocks,reps_per_block
 AbelerFalkGoetteHuffman_2011,0,100
-AkerKsollLybbert_2012,100,10
+AkerKsollLybbert_2012,0,100
 AlatasBanerjeeHannaOlkenTobias_2012,0,100
-AngristLangOreopoulos_2009,0,100
-AngristLavy_2009,0,100
+AngristLangOreopoulos_2009,25,400
+AngristLavy_2009,25,400
 AshrafBerryShapiro_2010,0,100
-Ashraf_2009,0,100
+Ashraf_2009,25,400
 BarreraOsorioBertrandLindenPerezCalle_2011,0,100
 BeamanMagruder_2012,0,100
 BurdeLinden_2013,0,100
@@ -36,7 +36,7 @@ GerberKarlanBergan_2009,0,100
 GertlerMartinezRubio-Codina_2012,0,100
 GineGoldbergYang_2012,0,0
 GineJakielaKarlanMorduch_2010,0,100
-GuryanKroftNotowidigdo_2009,0,100
+GuryanKroftNotowidigdo_2009,25,400
 HeffetzShayo_2009,0,100
 IfcherZarghamee_2011,0,100
 KarlanList_2007,0,0
