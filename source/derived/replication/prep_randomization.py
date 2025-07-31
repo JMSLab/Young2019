@@ -80,6 +80,9 @@ def modify_DHR(paper_dir):
     dst = os.path.join(paper_dir, 'Temp', 'drop.dta')
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     os.system(f'mv {src} {dst}')
+    src = os.path.join(paper_dir, 'teacher_test.dta')
+    dst = os.path.join(paper_dir, 'Teacher_test.dta')
+    os.system(f'mv {src} {dst}')
     with open(os.path.join(paper_dir, 'ReplicationDHR.do'), 'r') as file:
         lines = file.readlines()
     with open(os.path.join(paper_dir, 'ReplicationDHR.do'), 'w') as file:
