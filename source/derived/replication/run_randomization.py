@@ -27,7 +27,7 @@ def modify_fisher(block_dir, block_num, num_reps, acronym, stata_version='13.0')
         f.writelines(lines)
 
 def run_fisher(acronym, block_dir, stata_bin, timeout=None):
-    cmd = [stata_bin, '-b', 'run', f'FisherN{acronym}.do']
+    cmd = [stata_bin, '-b', 'run', f'FisherN{acronym}.do, nostop']
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, cwd=block_dir)
     except subprocess.TimeoutExpired:
