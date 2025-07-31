@@ -91,6 +91,7 @@ def modify_DHR(paper_dir):
         lines = [line.replace('use ', 'use \"') if line in mod_lines else line for line in lines]
         mod_lines = [line for line in lines if ', clear' in line and '\",' not in line]
         lines = [line.replace(', clear', '\", clear') if line in mod_lines else line for line in lines]
+        lines = [line.replace('merge schid using randomcheck_coded', 'merge schid using randomcheck_CODED') for line in lines]
         file.writelines(lines)
 
 def modify_ER(paper_dir):
