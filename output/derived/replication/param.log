@@ -1,15 +1,15 @@
 File: output/derived/replication/param.csv
 
-MD5 hash: 2823276b550abe53af8026594365b301
+MD5 hash: 3a97f9945565713ce69ca1fe0e7e637b
 
 Keys: paper coefficient number 
 
-                                        type count unique    mean     std    min     50%      max
-paper                                 object   868     17                                        
-coefficient number                   float64   868         63.264  65.977  1.000  38.000  262.000
-regression number                    float64   868         22.211  22.031  1.000  16.000  102.000
-original p-value                     float64   868          0.284   0.296  0.000   0.176    1.000
-randomization inference p-value      float64   868          0.294   0.300  0.000   0.184    1.000
-reported treatment effect indicator    int64   868          0.727   0.446  0.000   1.000    1.000
-leverage                             float64   631          0.048   0.083  0.003   0.017    0.657
+                                        type  count unique    mean     std    min     50%      max
+paper                                 object  3,439     42                                        
+coefficient number                   float64  3,439         92.621  90.528  1.000  61.000  405.000
+regression number                    float64  3,439         23.736  25.810  1.000  16.000  180.000
+original p-value                     float64  3,439          0.315   0.309  0.000   0.204    1.000
+randomization inference p-value      float64  3,439          0.338   0.311  0.000   0.244    1.000
+reported treatment effect indicator    int64  3,439          0.773   0.419  0.000   1.000    1.000
+leverage                             float64  2,657          0.049   0.072  0.000   0.020    0.714
 
