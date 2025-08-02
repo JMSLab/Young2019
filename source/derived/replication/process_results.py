@@ -46,7 +46,7 @@ def add_characteristics(paper_dir, young_dir, acronym):
     df = df.merge(chars, on=['paper', 'RegNum'], how='inner')
     coef_chars = pd.read_stata(os.path.join(young_dir, 'results', 'basecoef.dta'))
     df = df.merge(coef_chars, on=['paper', 'RegNum', 'CoefNum'], how='inner')
-    df = df[['paper', 'RegNum', 'CoefNum', 'p', 'rt1', 'cmd', 'vce', 'firsttable', 'table', 'select']]
+    df = df[['paper', 'RegNum', 'CoefNum', 'p', 'rt1', 'cmd', 'vce', 'firsttable', 'table', 'select', 'interactions']]
     df = df.rename(columns={
         'RegNum': 'regression number',
         'CoefNum': 'coefficient number',
@@ -56,7 +56,8 @@ def add_characteristics(paper_dir, young_dir, acronym):
         'vce': 'variance-covariance estimator',
         'firsttable': 'main table indicator',
         'table': 'original table number',
-        'select': 'reported treatment effect indicator'
+        'select': 'reported treatment effect indicator',
+        'interactions': 'interactions included'
     })
     return df
 

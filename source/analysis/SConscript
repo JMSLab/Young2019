@@ -1,4 +1,11 @@
 Import('*')
 
+target = ['#output/tables/table_v.tex']
+source = ['#source/analysis/replication/table_v.py',
+          '#output/derived/replication/paper.csv',
+          '#output/derived/replication/table.csv',
+          '#output/derived/replication/model.csv',
+          '#output/derived/replication/param.csv']
+env.Python(target, source)
 
 

@@ -27,7 +27,8 @@ def process_paper(paper, xwalk, num_blocks):
     df_model = df.groupby(['paper', 'regression number']).agg({
         'original table number': 'first',
         'regression command': 'first',
-        'variance-covariance estimator': 'first'
+        'variance-covariance estimator': 'first',
+        'interactions included': 'first'
     }).reset_index().sort_values('regression number')
     df_param = df.groupby(['paper', 'coefficient number']).agg({
         'regression number': 'first',

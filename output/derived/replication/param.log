@@ -1,6 +1,6 @@
 File: output/derived/replication/param.csv
 
-MD5 hash: 14e31a486bd955b69761f3e41dc15b85
+MD5 hash: 4a7e219c46a0305f273fc52ae8bff12f
 
 Keys: paper coefficient number 
 
@@ -9,7 +9,7 @@ paper                                 object  3,691     43
 coefficient number                   float64  3,691         94.934  89.833  1.000  65.000  405.000
 regression number                    float64  3,691         25.105  26.250  1.000  17.000  180.000
 original p-value                     float64  3,691          0.318   0.311  0.000   0.209    1.000
-randomization inference p-value      float64  3,691          0.339   0.313  0.000   0.247    1.000
+randomization inference p-value      float64  3,691          0.340   0.312  0.001   0.246    1.000
 reported treatment effect indicator    int64  3,691          0.777   0.416  0.000   1.000    1.000
 leverage                             float64  2,867          0.046   0.070  0.000   0.019    0.714
 
