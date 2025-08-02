@@ -6,6 +6,8 @@ papers = [row['paper'] for _, row in df.iterrows() if row['num_blocks'] > 0]
 for paper in papers:
     num_blocks = df[df['paper'] == paper]['num_blocks'].values[0]
     num_reps = df[df['paper'] == paper]['reps_per_block'].values[0]
+    bstrap_reps = df[df['paper'] == paper]['bstrap_reps'].values[0]
+    bstrap_reps = '' if pd.isna(bstrap_reps) else int(bstrap_reps)
 
     target = [f'#temp/replication/{paper}/replication.log']
     source = ['#source/derived/replication/prep_randomization.py']
@@ -15,7 +17,7 @@ for paper in papers:
         target = [f'#temp/replication/{paper}/block_{block_num}/randomization.log']
         source = ['#source/derived/replication/run_randomization.py',
                   f'#temp/replication/{paper}/replication.log']
-        env.Python(target, source, CL_ARG=f'{paper} {block_num} {num_reps}')
+        env.Python(target, source, CL_ARG=f'{paper} {block_num} {num_reps} {bstrap_reps}')
     
 target = []
 source = ['#source/derived/replication/process_results.py']

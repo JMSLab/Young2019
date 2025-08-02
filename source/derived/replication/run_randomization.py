@@ -14,7 +14,7 @@ def copy_files(paper_dir, block_dir, acronym):
     for file in glob.glob(f'{paper_dir}/Dat*.dta') + glob.glob(f'{paper_dir}/*.ado'):
         shutil.copy(file, block_dir)
 
-def modify_fisher(block_dir, block_num, num_reps, acronym, stata_version='13.0'):
+def modify_fisher(block_dir, block_num, num_reps, acronym, bstrap_reps, stata_version='13.0'):
     with open(f'{block_dir}/FisherN{acronym}.do', 'r') as f:
         lines = f.readlines()
         lines.insert(0, f'global reps = {num_reps}\n')
@@ -23,6 +23,8 @@ def modify_fisher(block_dir, block_num, num_reps, acronym, stata_version='13.0')
         lines = [line.replace(f'save results\\Fisher{acronym}, replace', 
                               f'save results_Fisher{acronym}, replace') for line in lines]
         lines = [line.replace(f'set seed `c\'', f'set seed `={num_reps * block_num} + `c\'\'') for line in lines]
+        if bstrap_reps is not None:
+            lines = [line.replace('reps(500)', f'reps({bstrap_reps})') for line in lines]
     with open(f'{block_dir}/FisherN{acronym}.do', 'w') as f:
         f.writelines(lines)
 
@@ -42,6 +44,7 @@ def main():
     paper = sys.argv[1] if len(sys.argv) > 1 else 'AshrafBerryShapiro_2010'
     block_num = int(sys.argv[2]) if len(sys.argv) > 2 else 0
     num_reps = int(sys.argv[3]) if len(sys.argv) > 3 else 10
+    bstrap_reps = int(sys.argv[4]) if len(sys.argv) > 4 else None
 
     xwalk = pd.read_csv('datastore/raw/InputsToYoung2019/Young2019AcronymCrosswalk.csv')
     acronym = xwalk['acronym'][xwalk['dir_name'] == paper].values[0]
@@ -50,7 +53,7 @@ def main():
     stata_bin = find_stata_bin()
 
     copy_files(paper_dir, block_dir, acronym)
-    modify_fisher(block_dir, block_num, num_reps, acronym)
+    modify_fisher(block_dir, block_num, num_reps, acronym, bstrap_reps=bstrap_reps)
     run_fisher(acronym, block_dir, stata_bin)
     for file in glob.glob(f'{block_dir}/Dat*.dta'):
         os.remove(file)
