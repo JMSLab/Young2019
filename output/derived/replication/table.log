@@ -1,11 +1,11 @@
 File: output/derived/replication/table.csv
 
-MD5 hash: 8ecf684404e3d5e5d13555a3fbf512ed
+MD5 hash: cf1e76a47bdf694a60209cb97eba9d32
 
 Keys: paper original table number 
 
                          type count unique    mean     std    min    50%      max
-paper                  object   154     42                                       
-original table number   int64   154         10.481  23.396  1.000  5.000  105.000
-main table indicator    int64   154          0.273   0.447  0.000  0.000    1.000
+paper                  object   159     43                                       
+original table number   int64   159         10.333  23.040  1.000  5.000  105.000
+main table indicator    int64   159          0.270   0.446  0.000  0.000    1.000
 
