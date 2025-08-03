@@ -1,6 +1,6 @@
 Import('*')
 
-target = ['#output/tables/table_v.tex']
+target = ['#output/tables/table_v.tex', '#output/tables/table_v.md']
 source = ['#source/analysis/replication/table_v.py',
           '#output/derived/replication/paper.csv',
           '#output/derived/replication/table.csv',

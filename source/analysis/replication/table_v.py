@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import csv
 from source.lib.JMSLab.tablefill import tablefill
+import pypandoc
 
 def process_data(df_par, df_mod, df_tab, df_pap):
     df = df_par.merge(df_mod, on=['paper', 'regression number'], how='left')
@@ -44,12 +45,17 @@ def fill_table(results, input_path, template_path, output_path):
     for i, metric in enumerate(['orig', 'ri'], start=4):
         out_mat[i] = [results[(g, metric, a)] for g in meta_groups for a in alphas]
     tag = "<tab:table_v>"
-    with open('output/analysis/replication/table_v.txt', "w", newline="") as f:
+    with open(input_path, "w", newline="") as f:
         f.write(tag + "\n")
-    pd.DataFrame(out_mat).to_csv('output/analysis/replication/table_v.txt',
-        sep="\t", index=False, header=False,
+    pd.DataFrame(out_mat).to_csv(input_path, sep="\t", index=False, header=False,
         mode="a", quoting=csv.QUOTE_NONE, escapechar="\\")
-    tablefill(input = input_path, template = template_path, output = output_path)
+    tablefill(input = input_path, template = template_path, output = output_path + '.tex')
+    with open(output_path + '.md', "w") as f:
+        f.write(pypandoc.convert_file(
+            output_path + '.tex',
+            to="gfm",
+            format="latex"
+        ))
 
 def main():
     df_par = pd.read_csv('output/derived/replication/param.csv')
@@ -59,7 +65,7 @@ def main():
     df = process_data(df_par, df_mod, df_tab, df_pap)
     results = extract_results(df)
     fill_table(results, 'output/analysis/replication/table_v.txt',
-               'source/tables/table_v.tex', 'output/tables/table_v.tex')
+               'source/tables/table_v.tex', 'output/tables/table_v')
 
 if __name__ == "__main__":
     main()

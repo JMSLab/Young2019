@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import os
 import subprocess
@@ -62,18 +63,23 @@ def add_characteristics(paper_dir, young_dir, acronym):
     return df
 
 def add_leverage(df, paper_dir, acronym):
-    lev = pd.read_stata(os.path.join(paper_dir, f'leverage_{acronym}.dta'))
-    lev = lev[lev['QQ1'].notna()]
-    lev = lev.rename(columns={
-        'CoefNum': 'coefficient number',
-        'QQ3': 'leverage'
-    })
-    lev = lev.merge(df[['paper', 'coefficient number', 'reported treatment effect indicator']], 
-                    on=['paper', 'coefficient number'], how='left')
-    lev = lev[lev['reported treatment effect indicator'] == 1]
-    df = df.merge(lev[['paper', 'coefficient number', 'leverage']], on=['paper', 'coefficient number'], how='left')
-    df['leverage (paper)'] = df['leverage'].mean()
-    return df
+    try:
+        lev = pd.read_stata(os.path.join(paper_dir, f'leverage_{acronym}.dta'))
+        lev = lev[lev['QQ1'].notna()]
+        lev = lev.rename(columns={
+            'CoefNum': 'coefficient number',
+            'QQ3': 'leverage'
+        })
+        lev = lev.merge(df[['paper', 'coefficient number', 'reported treatment effect indicator']], 
+                        on=['paper', 'coefficient number'], how='left')
+        lev = lev[lev['reported treatment effect indicator'] == 1]
+        df = df.merge(lev[['paper', 'coefficient number', 'leverage']], on=['paper', 'coefficient number'], how='left')
+        df['leverage (paper)'] = df['leverage'].mean()
+        return df
+    except Exception as e:
+        df['leverage'] = np.nan
+        df['leverage (paper)'] = np.nan
+        return df
 
 def process(paper, num_blocks):
     xwalk = pd.read_csv('datastore/raw/InputsToYoung2019/Young2019AcronymCrosswalk.csv')
