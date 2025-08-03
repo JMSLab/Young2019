@@ -20,9 +20,18 @@ After installing prerequisites, type `scons`.
 
 To use multiple CPUs, type `scons -j <number of CPUs>`.
 
-Details of computation are controlled by [dispatch.csv](./source/derived/replication/dispatch.csv).
+Details of computation are controlled by [`dispatch.csv`](./source/derived/replication/dispatch.csv).
 
 Randomization $p$-values are calculated based on many replicates per application. These replicates can be divided across multiple CPUs. For each application, set the number of blocks (i.e., CPUs) and the number of replicates per block in the dispatch file.  Young (2019) uses 10,000 replicates per application, and by default, we allocate 1000 replicates split over 10 blocks.
 
 Some applications use a bootstrap for inference. The `bstrap_reps` column of the dispatch file allows for specification of the number of bootstrap replicates when relevant. We set this to 500 by default.
 
+### Citation and expectations for usage
+
+If you benefit from this repository in your own research, please [let us know ](https://github.com/JMSLab/Young2019/issues/7), and please consider citing the repository.
+
+### References
+
+Isaiah Andrews, Simon Essig Aberg, and Jesse M. Shapiro. Partial replication of Young (2019). Github repository accessible at `https://github.com/JMSLab/Young2019`.
+
+Alwyn Young, Channeling Fisher: Randomization Tests and the Statistical Insignificance of Seemingly Significant Experimental Results, The Quarterly Journal of Economics, Volume 134, Issue 2, May 2019, Pages 557–598, https://doi.org/10.1093/qje/qjy029
