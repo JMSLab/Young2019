@@ -10,7 +10,7 @@ For more granular information, [this directory](./output/derived/replication) in
 
 This repository is based on [JMSLab/Template](https://github.com/JMSLab/Template/tree/df4cfef8d1b0515fef84a2394835faceae34e496) and by default shares its dependencies and requirements.
 
-The datastore is [Young2019](https://drive.google.com/drive/u/1/folders/0AMU9_S0mEvycUk9PVA).
+The datastore is [Young2019](https://drive.google.com/drive/u/1/folders/0AMU9_S0mEvycUk9PVA), which contains the source code and data that we use in the replication.
 
 ### How to run
 
@@ -35,3 +35,5 @@ If you benefit from this repository in your own research, please [let us know ](
 Isaiah Andrews, Simon Essig Aberg, and Jesse M. Shapiro. Partial replication of Young (2019). Github repository accessible at `https://github.com/JMSLab/Young2019`.
 
 Alwyn Young, Channeling Fisher: Randomization Tests and the Statistical Insignificance of Seemingly Significant Experimental Results, The Quarterly Journal of Economics, Volume 134, Issue 2, May 2019, Pages 557–598, https://doi.org/10.1093/qje/qjy029
+
+Alwyn Young, 2018, "Replication Data for: 'Channeling Fisher: Randomization Tests and the Statistical Insignificance of Seemingly Significant Experimental Results'", https://doi.org/10.7910/DVN/JX6HCJ, Harvard Dataverse, V1
