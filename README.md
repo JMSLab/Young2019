@@ -10,7 +10,7 @@ For more granular information, [this directory](./output/derived/replication) in
 
 This repository is based on [JMSLab/Template](https://github.com/JMSLab/Template/tree/df4cfef8d1b0515fef84a2394835faceae34e496) and by default shares its dependencies and requirements.
 
-The datastore is [Young2019](https://drive.google.com/drive/u/1/folders/0AMU9_S0mEvycUk9PVA), which contains the source code and data that we use in the replication.
+The public datastore is [Young2019](https://drive.google.com/drive/folders/1nUwBmEpuPjWZ6bnimYfqquN-WkOAMf2N?usp=sharing), which contains the source code and data that we use in the replication.
 
 ### How to run
 
