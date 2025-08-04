@@ -24,9 +24,7 @@ Details of computation are controlled by [`dispatch.csv`](./source/derived/repli
 
 Randomization $p$-values are calculated based on many replicates per application. These replicates can be divided across multiple CPUs. For each application, set the number of blocks (i.e., CPUs) and the number of replicates per block in the dispatch file.  Young (2019) uses 10,000 replicates per application, and by default, we allocate 1,000 replicates split over 10 blocks.
 
-Some applications use a bootstrap for inference. The `bstrap_reps` column of the dispatch file allows for specification of the number of bootstrap replicates when relevant. We set this to 500 by default.
-
-To reproduce the original analysis, allocate 10,000 replicates per application over any number of blocks and set `bstrap_reps` to 500.
+Some applications use a bootstrap for inference. The `bstrap_reps` column of the dispatch file allows for specification of the number of bootstrap replicates when relevant. Young (2019) uses 500 replicates, which we set as the default.
 
 ### Citation and expectations for usage
 
