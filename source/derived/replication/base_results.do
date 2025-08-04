@@ -1,3 +1,6 @@
+* This script is a lightly modified version of a script with the same name in the replication package:
+* Alwyn Young, 2018, "Replication Data for: 'Channeling Fisher: Randomization Tests and the Statistical Insignificance of Seemingly Significant Experimental Results'", 
+* https://doi.org/10.7910/DVN/JX6HCJ, Harvard Dataverse, V1
 
 quietly sum F1
 global N1 = r(N)
