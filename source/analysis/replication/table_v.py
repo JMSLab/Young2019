@@ -27,10 +27,13 @@ def extract_results(df):
         'interactions': df['interactions included'] == 1, 'no interactions': df['interactions included'] == 0
     }
     for grp, filt in group_filters.items():
-        results[(grp, 'num_papers')] = df.loc[filt, 'paper'].nunique()
+        df_g = df.loc[filt, ['paper', metrics['orig'], metrics['ri']]]
+        results[(grp, 'num_papers')] = int(df_g['paper'].nunique())
         for alpha in [0.01, 0.05]:
-            results[(grp, 'orig', alpha)] = df.loc[filt][metrics['orig']].le(alpha).mean()
-            results[(grp, 'ri', alpha)] = df.loc[filt][metrics['ri']].le(alpha).mean() / df.loc[filt][metrics['orig']].le(alpha).mean()
+            orig_mean = (df_g[metrics['orig']] <= alpha).groupby(df_g['paper']).mean().mean()
+            ri_mean = (df_g[metrics['ri']] <= alpha).groupby(df_g['paper']).mean().mean()
+            results[(grp, 'orig', alpha)] = orig_mean
+            results[(grp, 'ri', alpha)] = ri_mean / orig_mean if orig_mean > 0 else np.nan
     return results
 
 def fill_table(results, input_path, template_path, output_path):
